@@ -1,21 +1,16 @@
 import {useState} from "react";
+import {useForm} from "../hooks/useForm.js";
 
 export const FormularioComponente = () => {
-    const [formState, setFormState] = useState({
-        userName:'Omar Rojas Poma',
-        email: 'omarrojasp@gmail.com',
-        password: '123123'
-    })
 
-    const {userName, email, password} = formState
-
-    const onInputChange= ({target})=>{
-       const {name, value} = target
-        setFormState({
-            ...formState,
-            [name]: value
-        })
+    const initialForm = {
+        userName:'',
+        email: '',
+        password:''
     }
+
+    const {formState, userName,email,password, onInputChange}=  useForm(initialForm)
+
 
     const onSubmit = (event) => {
         event.preventDefault()
